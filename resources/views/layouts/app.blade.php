@@ -11,6 +11,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
     <!-- Fonts -->
@@ -41,6 +43,11 @@
                                     {{ __('Browse Tasks') }}
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('tasks.create') }}">
+                                    {{ __('Post') }}
+                                </a>
+                            </li>
                         @endauth
                     </ul>
                     <ul class="navbar-nav text-uppercase ml-auto">
@@ -61,8 +68,7 @@
                                     {{ Auth::user()->name }}
                                 </a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                                                                                document.getElementById('logout-form').submit();">
+                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -75,10 +81,22 @@
             </div>
         </nav>
 
+        @if (isset($errors) && $errors->any())
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Error!</strong> {{ $error }}
+                </div>
+            @endforeach
+        @endif
+        @if (session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Success!</strong> {{ session()->get('success') }}
+            </div>
+        @endif
+
         <main class="py-4 mt-5">
             @yield('content')
         </main>
-
     </div>
 </body>
 
