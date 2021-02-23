@@ -22,4 +22,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::resource('tasks', TaskController::class);
+Route::resource('tasks', TaskController::class)->middleware('auth');

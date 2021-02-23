@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Task;
+use App\Models\Comment;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,5 +22,12 @@ class DatabaseSeeder extends Seeder
             $task->user_id = $users->random()->id;
             $task->save();
         });
+
+        $comments = Comment::factory()->count(40)->make()
+            ->each(function($comment) use($users, $tasks) {
+                $comment->user_id = $users->random()->id;
+                $comment->task_id = $tasks->random()->id;
+                $comment->save();
+            });
     }
 }

@@ -9,10 +9,7 @@ use App\Models\Task;
 class TaskController extends Controller
 {
     public function index() {
-        $tasks = Task::open()->with('user')->latest()->get();
-        return view('tasks.index')->with([
-            'tasks' => $tasks,
-        ]);
+        return view('tasks.index');
     }
 
     public function store(TaskRequest $request) {

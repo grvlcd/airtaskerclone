@@ -11,7 +11,7 @@
             <div class="form-group">
                 <label for="description">Description</label>
                 <textarea rows="6" name="description"
-                    class="form-control resize">{{ $task->description ?? old('description') }}</textarea>
+                    class="resize form-control">{{ $task->description ?? old('description') }}</textarea>
             </div>
             <div class="form-group">
                 <label for="rate">Rate</label>
