@@ -41,6 +41,5 @@
             </form>
         </div>
     @endcan
-    {{ $task->comments }}
-    @livewire('task-comment', ['comments' => $task->comments])
+    @livewire('task-comment', ['task_id' => $task->id])
 </div>

@@ -1,4 +1,4 @@
-<div class="px-5 mb-4 row" wire:click="showTask">
+<div class="px-5 mb-4 cursor-pointer row" wire:click="showTask">
     <div class="grid-cols-12">
         <div class="max-w-sm p-6 tracking-wide bg-white border-2 border-gray-300 rounded-md shadow-lg hover:shadow-2xl">
             <div class="card-body">
