@@ -1,4 +1,4 @@
-<div class="grid grid-cols-4">
+<div class="grid grid-cols-4 mt-4">
     <div class="">
         @foreach ($tasks as $task)
             @livewire('task-card', ['task' => $task], key($task->id))

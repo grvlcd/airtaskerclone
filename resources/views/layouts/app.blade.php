@@ -28,7 +28,7 @@
     <div id="app">
 
         <!-- This example requires Tailwind CSS v2.0+ -->
-        <nav class="bg-gray-800">
+        <nav class="z-10 bg-gray-800">
             <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="relative flex items-center justify-between h-16">
                     <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -110,7 +110,8 @@
                                         Register</a>
                                 @endif
                             @else
-                                <a href="#" class="px-3 py-2 text-sm font-medium text-white rounded-md">
+                                <a href="{{ route('profile.index') }}"
+                                    class="px-3 py-2 text-sm font-medium text-white rounded-md">
                                     {{ Auth::user()->name }}
                                 </a>
                                 <a href="{{ route('logout') }}"
@@ -170,7 +171,7 @@
         </div>
     @endif
 
-    <main class="py-4 mt-5">
+    <main>
         @yield('content')
     </main>
     </div>
