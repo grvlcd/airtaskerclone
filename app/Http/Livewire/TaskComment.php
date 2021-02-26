@@ -21,6 +21,7 @@ class TaskComment extends Component
     }
 
     public function getTaskEmitted($task) {
+        $this->task_id = $task;
         $this->comments = Comment::where('task_id', '=', $task)->get();
     }
 
@@ -29,7 +30,6 @@ class TaskComment extends Component
             'body' => $this->body,
             'task_id' => $this->task_id,
         ]);
-        $this->comments = "";
         $this->comments = Comment::where('task_id', '=', $this->task_id)->get();
         $this->reset('body');
     }

@@ -21,6 +21,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
+    </style>
     @livewireStyles
 </head>
 
@@ -36,7 +42,7 @@
                         <button type="button"
                             class="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                             aria-controls="mobile-menu" aria-expanded="false">
-                            <span class="sr-only">Open main menu</span>
+                            <span class="sr-only">{{ __('Open main menu') }}</span>
                             <!-- Icon when menu is closed. -->
                             <!--
               Heroicon name: outline/menu
@@ -74,10 +80,10 @@
                                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                                 @auth
                                     <a href="{{ route('tasks.index') }}"
-                                        class="px-3 py-2 text-sm font-medium text-white rounded-md">Browse
-                                        Task</a>
-                                    <a href="{{ route('tasks.create') }}"
-                                        class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Post</a>
+                                        class="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-gray-700 hover:text-white">{{ __('Browse
+                                        Task') }}</a>
+                                    <a role="button"
+                                        class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">{{ __('Post') }}</a>
                                 @endauth
                             </div>
                         </div>
@@ -86,7 +92,7 @@
                         class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                         <button
                             class="p-1 text-gray-400 bg-gray-800 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                            <span class="sr-only">View notifications</span>
+                            <span class="sr-only">{{ __('View notifications') }}</span>
                             <!-- Heroicon name: outline/bell -->
                             <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor" aria-hidden="true">
@@ -100,28 +106,37 @@
                             @guest
                                 @if (Route::has('login'))
                                     <a href="{{ route('login') }}"
-                                        class="px-3 py-2 text-sm font-medium text-white rounded-md">
-                                        Login</a>
+                                        class="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-gray-700 hover:text-white">
+                                        {{ __('Login') }}</a>
                                 @endif
 
                                 @if (Route::has('register'))
                                     <a href="{{ route('register') }}"
-                                        class="px-3 py-2 text-sm font-medium text-white rounded-md">
-                                        Register</a>
+                                        class="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-gray-700 hover:text-white">
+                                        {{ __('Register') }}</a>
                                 @endif
                             @else
-                                <a href="{{ route('profile.index') }}"
-                                    class="px-3 py-2 text-sm font-medium text-white rounded-md">
-                                    {{ Auth::user()->name }}
-                                </a>
-                                <a href="{{ route('logout') }}"
-                                    class="px-3 py-2 text-sm font-medium text-white rounded-md"
-                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
+                                <div class="flex flex-row items-center justify-center">
+                                    @if (isset(Auth::user()->profile->path))
+                                        <img class="inline w-8 h-8 rounded-full" src="{{ Auth::user()->profile->path }}">
+                                    @else
+                                        <img class="w-8 h-8 rounded-full"
+                                            src="https://i.pinimg.com/originals/df/28/37/df28378dbe3bc59d8e5d3646ade310b8.jpg">
+                                    @endif
+                                    <a href="{{ route('profile.index') }}"
+                                        class="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-gray-700 hover:text-white">
+                                        {{ Auth::user()->name }}
+                                    </a>
+
+                                    <a href="{{ route('logout') }}"
+                                        class="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-gray-700 hover:text-white"
+                                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
                             @endguest
                         </div>
                     </div>
@@ -174,7 +189,6 @@
     <main>
         @yield('content')
     </main>
-    </div>
     @livewireScripts
 </body>
 

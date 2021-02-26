@@ -1,4 +1,4 @@
-<div class="sticky max-w-5xl p-6 mt-4 tracking-wide bg-white border-2 border-gray-300 rounded-md shadow-lg top-5">
+<div class="sticky max-w-5xl p-6 mt-10 tracking-wide bg-white border-2 border-gray-300 rounded-md shadow-lg top-5">
     <h4
         class="flex items-center justify-center w-24 text-lg tracking-wide text-white uppercase bg-green-400 rounded-2xl">
         {{ $task->status }}</h4>

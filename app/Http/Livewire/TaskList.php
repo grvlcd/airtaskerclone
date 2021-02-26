@@ -9,10 +9,17 @@ class TaskList extends Component
 {
     public $tasks; 
     public $selectedTask;
+    public $show = false;
 
     protected $listeners = [
-        'task' => 'getTaskEmitted'
+        'task' => 'getTaskEmitted',
+        'refreshParent',
     ];
+
+    public function refreshParent($show) {
+        $this->tasks = Task::open()->with('user')->latest()->get();
+        $this->show = $show;
+    }
 
     public function getTaskEmitted($task) {
         $this->selectedTask = 
