@@ -117,18 +117,24 @@
                                 @endif
                             @else
                                 <div class="flex flex-row items-center justify-center">
-                                    @if (isset(Auth::user()->profile->path))
-                                        <img class="inline w-8 h-8 rounded-full" src="{{ Auth::user()->profile->path }}">
-                                    @else
-                                        <img class="w-8 h-8 rounded-full"
-                                            src="https://i.pinimg.com/originals/df/28/37/df28378dbe3bc59d8e5d3646ade310b8.jpg">
-                                    @endif
-                                    <a href="{{ route('profile.index') }}"
-                                        class="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-gray-700 hover:text-white">
-                                        {{ Auth::user()->name }}
-                                    </a>
 
-                                    <a href="{{ route('logout') }}"
+                                    <div class="flex flex-row px-3 py-2 rounded-md hover:bg-gray-700 hover:text-white">
+                                        @if (isset(Auth::user()->profile->path))
+                                            <img class="inline w-8 h-8 rounded-full"
+                                                src="{{ asset('images/' . Auth::user()->profile->path) }}">
+
+                                        @else
+                                            <img class="w-8 h-8 rounded-full" src="">
+                                            {{-- https://i.pinimg.com/originals/df/28/37/df28378dbe3bc59d8e5d3646ade310b8.jpg --}}
+                                        @endif
+                                        <a href="{{ route('profile.index') }}"
+                                            class="px-3 py-2 text-sm font-medium text-white rounded-md">
+                                            {{ Auth::user()->name }}
+                                        </a>
+                                    </div>
+
+
+                                    <a href=" {{ route('logout') }}"
                                         class="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-gray-700 hover:text-white"
                                         onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}

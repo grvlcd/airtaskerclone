@@ -21,10 +21,10 @@
                     <input class="px-3 py-2 border text-grey-darkest" type="password" name="password" id="password">
                 </div>
                 <div class="flex flex-col mb-6">
-                    <label class="mb-2 text-lg font-bold uppercase text-grey-darkest"
-                        for="password_confirm">Password</label>
+                    <label class="mb-2 text-lg font-bold uppercase text-grey-darkest" for="password-confirm">Confirm
+                        Password</label>
                     <input class="px-3 py-2 border text-grey-darkest" type="password" name="password_confirmation"
-                        id="password_confirm">
+                        id="password-confirm">
                 </div>
                 <button
                     class="block px-5 py-2 mx-auto mb-2 text-lg text-indigo-500 uppercase border border-indigo-500 rounded bg-teal hover:bg-teal-dark"

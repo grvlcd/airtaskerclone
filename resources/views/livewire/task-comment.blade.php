@@ -5,12 +5,13 @@
             <div class="p-3 m-1 bg-gray-100 rounded-2xl">
                 <div class="flex flex-row items-center justify-start">
                     @if (isset($comment->user->profile->path))
-                        <img class="w-8 h-8 mr-2 rounded-full" src="{{ $comment->user->profile->path }}">
+                        <img class="w-8 h-8 mr-2 rounded-full"
+                            src="{{ asset('images/' . $comment->user->profile->path) }}">
                     @else
                         <img class="w-8 h-8 mr-2 rounded-full"
                             src="https://i.pinimg.com/originals/df/28/37/df28378dbe3bc59d8e5d3646ade310b8.jpg">
                     @endif
-                    <p class="text-sm font-medium font-semibold text-grey-darkest">{{ $comment->user->name }}</p>
+                    <p class="text-sm font-medium text-grey-darkest">{{ $comment->user->name }}</p>
                 </div>
                 <small class="text-xs text-grey-dark ">{{ $comment->body }}</small>
             </div>

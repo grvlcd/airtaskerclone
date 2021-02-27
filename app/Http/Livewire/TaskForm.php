@@ -30,7 +30,7 @@ class TaskForm extends Component
             'desired_date' => $this->desired_date
         ]);
         $this->clearFields();
-        $this->emit('refreshParent', $this->show);
+        $this->closeModal();
     }
 
     public function closeModal() {
