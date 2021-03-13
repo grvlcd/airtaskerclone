@@ -12,16 +12,17 @@ class Comment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
         'task_id',
         'body',
     ];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function task() {
+    public function task()
+    {
         return $this->belongsTo(Task::class);
     }
 }

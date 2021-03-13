@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CertificateController;
-
+use App\Http\Controllers\CommentController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +24,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-Route::middleware(['auth'])->group(function() {
+Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [Profilecontroller::class, 'index'])->name('profile.index');
     Route::get('/profile/{user}/edit', [Profilecontroller::class, 'edit'])->name('profile.edit');
     Route::post('/profile/{user}/update', [Profilecontroller::class, 'update'])->name('profile.update');
@@ -36,4 +37,5 @@ Route::middleware(['auth'])->group(function() {
 
 
 Route::resource('tasks', TaskController::class)->middleware('auth');
+Route::resource('comments', CommentController::class);
 Auth::routes();
